@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="ui-page-login">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<link href="../static/mui.min.css" rel="stylesheet" />
+		<style>
+			.area {
+				margin: 20px auto 0px auto;
+			}
+			
+			.mui-input-group:first-child {
+				margin-top: 20px;
+			}
+			
+			.mui-input-group label {
+				width: 22%;
+			}
+			
+			.mui-input-row label~input,
+			.mui-input-row label~select,
+			.mui-input-row label~textarea {
+				width: 78%;
+			}
+			
+			.mui-checkbox input[type=checkbox],
+			.mui-radio input[type=radio] {
+				top: 6px;
+			}
+			
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">用户端注册</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group" id="form">
+
+			</form>
+			<div class="mui-content-padded">
+				<button id='reg' class="mui-btn mui-btn-block mui-btn-primary">注册</button>
+			</div>
+
+		</div>
+		<script src="../static/mui.min.js"></script>
+		<script src="../static/jquery-2.1.4.js"></script>
+		<script>
+			var list = ["电话", "密码"];
+			var idlist = [ "dianhua", "mima"];
+
+			for(var i = 0; i < list.length; i++) {
+				var table = document.getElementById("form");
+				var div = document.createElement('div');
+				div.className = 'mui-input-row';
+
+				//下拉刷新，新纪录插到最前面；
+				table.insertBefore(div, table.lastChild);
+				//				if(i == list.length - 1) {
+				//					div.innerHTML = '<label>' + list[i] + '</label><input type="file" id="profilePhotoFileUpload">';
+				//
+				//					var p = document.createElement('p');
+				//					p.innerHTML = '&nbsp&nbsp&nbsp&nbsp&nbsp选择一张本人手持身份证的正面照'
+				//					table.insertBefore(p, table.lastChild);
+				//					continue
+				//				}
+				div.innerHTML = '<label>' + list[i] + '</label><input id=' + idlist[i] + ' type="text" class="mui-input-clear mui-input" placeholder="请输入' + list[i] + '">';
+
+			}
+
+			$("#reg").click(function() {
+				list = [ "电话", "密码"];
+				idlist = [ "dianhua", "mima"];
+				$.get('/regist?name='+$('#dianhua').val()+"&pwd="+$('#mima').val(),{},function(data){
+					alert(JSON.parse(data).msg)
+					mui.back()
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

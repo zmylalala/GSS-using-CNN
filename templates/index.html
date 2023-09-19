@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../static/mui.min.css" rel="stylesheet" />
+		<script src="../static/mui.min.js"></script>
+	</head>
+
+	<body>
+		<script src="../static/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">Main Page</h1>
+
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" href="main.html">
+						Upload
+					</a>
+				</li>
+
+				<li class="mui-table-view-cell" onclick="mui.openWindow({url:'shibiejilu.html'})">
+					<a class="mui-navigate-right" >
+						Record
+					</a>
+				</li>
+				<li class="mui-table-view-cell"  onclick="mui.openWindow({url:'yijianfankui.html'})">
+					<a class="mui-navigate-right">
+						Comment
+					</a>
+				</li>
+				<li class="mui-table-view-cell"  onclick="mui.openWindow({url:'userLogin.html'})">
+					<a class="mui-navigate-right" >
+						Logout
+					</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>
