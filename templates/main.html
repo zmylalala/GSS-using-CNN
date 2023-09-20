@@ -16,13 +16,13 @@
 		<header class="mui-bar mui-bar-nav">
 						<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 
-		    <h1 class="mui-title">选图片进行识别</h1>
+		    <h1 class="mui-title">select a picture to identify</h1>
 		</header>
 		<div class="mui-content">
 			
 		<form action="/uploadfile" method="post" enctype="multipart/form-data">
 			<input type="file" name="the_file">
-			<input type="submit" value="提交">
+			<input type="submit" value="submit">
 		</form>
 		<img class="img" />
 		</div>
@@ -38,7 +38,7 @@
 				$.post('/uploadfile', JSON.stringify({
 					'name': 'llx'
 				}), function(d) {
-					alert('上传成功')
+					alert('success!')
 				})
 			})
 
