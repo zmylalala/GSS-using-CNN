@@ -56,14 +56,6 @@ val_ds = tf.keras.utils.image_dataset_from_directory(
 class_names = train_ds.class_names
 print(class_names)
 
-# normalization_layer = tf.keras.layers.Rescaling(1. / 255)
-#
-# normalized_ds = train_ds.map(lambda x, y: (normalization_layer(x), y))
-# image_batch, labels_batch = next(iter(normalized_ds))
-# first_image = image_batch[0]
-# # Notice the pixel values are now in `[0,1]`.
-# print(np.min(first_image), np.max(first_image))
-
 AUTOTUNE = tf.data.AUTOTUNE
 
 train_ds = train_ds.cache().prefetch(buffer_size=AUTOTUNE)
@@ -100,7 +92,7 @@ cp_callback = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path,
 
 # Train the model with the new callback
 model.fit(train_ds,
-          epochs=20,
+          epochs=10,
           validation_data=val_ds,
           callbacks=[cp_callback])  # Pass callback to training
 
@@ -108,4 +100,9 @@ model.fit(train_ds,
 # These warnings (and similar warnings throughout this notebook)
 # are in place to discourage outdated usage, and can be ignored.
 
-model.summary()
+# model.summary()
+
+probability_model = tf.keras.Sequential([model,
+                                         tf.keras.layers.Softmax()])
+# Save the model
+probability_model.save('./model/probability_model')
